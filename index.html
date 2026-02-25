@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Unreliable Search Engine</title>
 </head>
-<body>
 
+<body>
+<h1>Unreliable Search Engine</h1>
+<form id="searchForm">
+    <label for="query"> Search Here: </label>
+    <input type="text" id="query" name="query" required>
+    <br><br>
+    <label>Choose website selection:</label><br>
+    <input type="radio" id="popular" name="selection" value="1" checked>
+    <label for="popular">Most Popular</label><br>
+    <input type="radio" id="random" name="selection" value="2">
+    <label for="random">Random</label><br>
+    <br>
+    <button type="submit">Search</button>
+</form>
+
+<div id="results" style="margin-top: 20px; white-space: pre-wrap; word-break: break-all;"></div>
+
+<script src="index.js"></script>
 </body>
 </html>
