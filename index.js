@@ -28,13 +28,11 @@ inputForm.addEventListener('submit', async function (event) {
         let domains = [];
         if (selection === '2') {
             // Randomly shuffle
-            console.log("Using random websites...");
             domains = data
                 .sort(() => Math.random() - 0.5)
                 .map(d => d.domain);
         } else {
             // Sort by Site Rank
-            console.log("Using most popular websites...");
             domains = data
                 .sort((a, b) => a.rank - b.rank)
                 .map(d => d.domain);
@@ -61,20 +59,9 @@ inputForm.addEventListener('submit', async function (event) {
         const domainsPattern = siteOperators.join(" OR ");
         const searchPrompt = baseQuery + domainsPattern;
 
-        resultsDiv.innerText = `Final query length: ${searchPrompt.length}\n\nFinal search prompt:\n${searchPrompt}`;
-        
         // Open the search query in a new tab (Google Search)
         const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchPrompt)}`;
         window.open(searchUrl, '_blank');
-
-        // Optional: Create a download link for the "search_query.txt"
-        const blob = new Blob([searchPrompt], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'search_query.txt';
-        link.innerText = '\n\nDownload search_query.txt';
-        resultsDiv.appendChild(link);
 
     } catch (error) {
         console.error("Error processing CSV:", error);
